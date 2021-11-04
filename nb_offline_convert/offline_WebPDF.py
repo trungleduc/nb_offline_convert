@@ -2,7 +2,7 @@ from nbconvert import WebPDFExporter
 from .tools import OfflineMixing
 
 
-class OfflineWebPDFExpoter(OfflineMixing, WebPDFExporter):
+class OfflineWebPDFExporter(OfflineMixing, WebPDFExporter):
 
     template_name = "webpdf_offline"
 

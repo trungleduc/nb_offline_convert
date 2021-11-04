@@ -92,7 +92,7 @@ for root, dirs, files in os.walk("share"):
 setup_args = dict(
     entry_points={
         "nbconvert.exporters": [
-            "html-offline = nb_offline_convert:OfflineHTMLExpoter"
+            "html-offline = nb_offline_convert:OfflineHTMLExporter",
             "webpdf-offline = nb_offline_convert:OfflineWebPDFExporter"
         ],
     },

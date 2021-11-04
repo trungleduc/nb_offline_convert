@@ -2,7 +2,7 @@ from nbconvert import HTMLExporter
 from .tools import OfflineMixing
 
 
-class OfflineHTMLExpoter(OfflineMixing, HTMLExporter):
+class OfflineHTMLExporter(OfflineMixing, HTMLExporter):
 
     template_name = "lab_offline"
 

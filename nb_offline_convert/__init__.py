@@ -1,4 +1,4 @@
-from .offline_HTML import OfflineHTMLExpoter
-from .offline_WebPDF import OfflineWebPDFExpoter
+from .offline_HTML import OfflineHTMLExporter
+from .offline_WebPDF import OfflineWebPDFExporter
 
-__all__ = ["OfflineHTMLExpoter", "OfflineWebPDFExpoter"]
+__all__ = ["OfflineHTMLExporter", "OfflineWebPDFExporter"]
