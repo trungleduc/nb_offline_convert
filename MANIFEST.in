@@ -1,0 +1,13 @@
+include LICENSE.md
+include README.md
+
+graft nb_offline_convert/lab_offline
+
+
+# Patterns to exclude from any directory
+global-exclude *~
+global-exclude *.pyc
+global-exclude *.pyc*
+global-exclude *.pyo
+global-exclude .git
+global-exclude .ipynb_checkpoints

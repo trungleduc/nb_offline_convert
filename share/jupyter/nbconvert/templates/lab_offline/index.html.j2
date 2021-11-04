@@ -1,0 +1,13 @@
+{%- extends 'lab/index.html.j2' -%}
+{%- block html_head_js -%}
+{%- block html_head_js_requirejs -%}
+{{ resources.include_js("static/require.min.js") }}
+{%- endblock html_head_js_requirejs -%}
+<script>     window.requirejs.config({
+  baseUrl: `./offline/static`,
+  map: {
+    "*": {{ resources.offline_module_path }} 
+  },
+});
+</script>
+{%- endblock html_head_js -%}`
