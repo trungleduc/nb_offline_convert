@@ -1,3 +1,9 @@
+#############################################################
+# Created on Thu Nov 04 2021                                #
+# Copyright (c) 2021 Duc Trung Le (leductrungxf@gmail.com)  #
+# Distributed under the terms of the MIT License            #
+#############################################################
+
 import os
 import re
 from typing import Dict as TypeDict

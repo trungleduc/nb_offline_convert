@@ -1,3 +1,10 @@
+#############################################################
+# Created on Thu Nov 04 2021                                #
+# Copyright (c) 2021 Duc Trung Le (leductrungxf@gmail.com)  #
+# Distributed under the terms of the MIT License            #
+#############################################################
+
+
 from nbconvert import HTMLExporter
 from .tools import OfflineMixing
 
