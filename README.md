@@ -12,7 +12,7 @@ This exporter allows `nbconvert` to export notebooks into `HTML` and `PDF` files
 `nb_offline_convert` can be installed from PyPI
 
 ```
-pip install nb_offline_convert
+pip install nb-offline-convert
 ```
 
 ## Usage
