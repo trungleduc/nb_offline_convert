@@ -4,7 +4,6 @@
 {{ resources.include_js("static/require.min.js") }}
 {%- endblock html_head_js_requirejs -%}
 <script>     window.requirejs.config({
-  baseUrl: `./offline/static`,
   map: {
     "*": {{ resources.offline_module_path }} 
   },
