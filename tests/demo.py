@@ -1,17 +1,21 @@
-from nb_offline_convert import OfflineHTMLExpoter
-import sys
+from nb_offline_convert import OfflineHTMLExpoter, OfflineWebPDFExpoter
+
 
 def convert_notebook(nb_path: str) -> None:
 
-    write_format = 'w'
-    outfile = nb_path.split('.')[0] + '.html'
+    outfile = nb_path.split(".")[0]
 
     converter = OfflineHTMLExpoter()
 
     out, _ = converter.from_filename(nb_path)
-    with open(outfile, write_format) as f:
+    with open(outfile + ".html", "w") as f:
         f.write(out)
-    print(sys.prefix)
 
-if __name__ == '__main__':
-    convert_notebook('bqplot.ipynb')
+    pdf_converter = OfflineWebPDFExpoter()
+    out, _ = pdf_converter.from_filename(nb_path)
+    with open(outfile + ".pdf", "wb") as f:
+        f.write(out)
+
+
+if __name__ == "__main__":
+    convert_notebook("bqplot.ipynb")

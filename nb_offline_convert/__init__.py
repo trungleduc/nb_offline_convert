@@ -1,2 +1,2 @@
-from .offline_HTML_Exporter import OfflineHTMLExpoter
-from .offline_WebPDF_Exporter import OfflineWebPDFExpoter
+from .offline_HTML import OfflineHTMLExpoter
+from .offline_WebPDF import OfflineWebPDFExpoter

@@ -59,3 +59,7 @@ docs/_build/
 target/
 
 share/**/embed-amd.js
+
+.ipynb_checkpoints/
+tests/*.pdf
+tests/*.html

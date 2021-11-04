@@ -1,6 +1,8 @@
-from setuptools import setup
 import os
+import re
 import sys
+
+from setuptools import setup
 from setuptools.command.develop import develop
 
 try:
@@ -8,10 +10,13 @@ try:
 except Exception:
     jupyter_core_paths = None
 
+ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 class DevelopCmd(develop):
     prefix_targets = [
         ("nbconvert/templates", "lab_offline"),
+        ("nbconvert/templates", "webpdf_offline"),
     ]
 
     def run(self):
@@ -39,17 +44,20 @@ class DevelopCmd(develop):
         super(DevelopCmd, self).run()
 
 
-def patch_html_manager(embed_path: str, cdn: str, static_path: str) -> None:
-    with open(embed_path, "r") as f:
+def patch_html_manager(embed_path: str, static_path: str) -> None:
+    cdn = r"https:\/\/unpkg.com"
+    embed_original = os.path.join(embed_path, "embed-amd-original.js")
+    embed = os.path.join(embed_path, "embed-amd.js")
+
+    with open(embed_original, "r") as f:
         content: str = f.read()
-    with open(embed_path, "w") as f:
-        pattern = fr"{cdn}\/@jupyter-widgets\/html-manager@(.*?)\/dist\/"
+    with open(embed, "w") as f:
+        pattern = fr"{cdn}\/@jupyter-widgets\/html-manager@(.*?)\/dist"
         new_content = re.sub(pattern, static_path, content)
         f.write(new_content)
 
 
-embed_path = os.path.join(
-    "nb_offline_convert",
+static_prefix = os.path.join(
     "share",
     "jupyter",
     "nbconvert",
@@ -59,14 +67,25 @@ embed_path = os.path.join(
     "@jupyter-widgets",
     "html-manager@0.20.0",
     "dist",
-    "embed-amd-original.js",
 )
+
+embed_path = os.path.join(
+    ROOT,
+    static_prefix,
+)
+
+static_path = os.path.join(sys.prefix, static_prefix)
+patch_html_manager(embed_path, static_path)
 
 data_files = []
 
 for root, dirs, files in os.walk("share"):
     if files:
-        root_files = [os.path.join(root, i) for i in files]
+        root_files = [
+            os.path.join(root, i)
+            for i in files
+            if i != "embed-amd-original.js"
+        ]
         data_files.append((root, root_files))
 
 

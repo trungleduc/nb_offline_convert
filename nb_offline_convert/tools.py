@@ -1,6 +1,8 @@
 import os
 import re
 from typing import Dict as TypeDict
+from traitlets.config.configurable import LoggingConfigurable
+from traitlets.traitlets import Dict
 import sys
 from genericpath import isdir
 from jupyter_core.paths import jupyter_path
@@ -50,4 +52,20 @@ def get_extention_path() -> TypeDict[str, str]:
     return ret
 
 
+class OfflineMixing(LoggingConfigurable):
 
+    mathjax_url = (
+        get_template_path("static", "MathJax", "MathJax.js")
+        + "?config=TeX-AMS_CHTML-full,Safe"
+    )
+
+    widget_renderer_url = get_template_path(
+        "static",
+        "@jupyter-widgets",
+        "html-manager@0.20.0",
+        "dist",
+        "embed-amd.js",
+    )
+    offline_module_path = Dict(
+        get_extention_path(), help="Path to offline js module"
+    )

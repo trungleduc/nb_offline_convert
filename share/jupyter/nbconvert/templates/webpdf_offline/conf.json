@@ -1,0 +1,6 @@
+{
+    "base_template": "lab_offline",
+    "mimetypes": {
+        "application/pdf": true
+    }
+}
