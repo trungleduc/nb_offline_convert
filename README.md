@@ -30,16 +30,16 @@ jupyter nbconvert --to webpdf-offline notebook-you-want-to-convert.ipynb
 - Usage in a script
 
 ```python
-from nb_offline_convert import OfflineHTMLExpoter, OfflineWebPDFExpoter
+from nb_offline_convert import OfflineHTMLExporter, OfflineWebPDFExporter
 
 # convert to html
-html_converter = OfflineHTMLExpoter()
+html_converter = OfflineHTMLExporter()
 content, _ = html_converter.from_filename("notebook-you-want-to-convert.ipynb")
 with open("converted_file.html", "w") as f:
     f.write(content)
     
 # convert to pdf
-pdf_converter = OfflineWebPDFExpoter()
+pdf_converter = OfflineWebPDFExporter()
 content, _ = pdf_converter.from_filename("notebook-you-want-to-convert.ipynb")
 with open("converted_file.pdf", "wb") as f:
     f.write(content)
