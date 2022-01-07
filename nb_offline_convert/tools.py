@@ -8,7 +8,7 @@ import os
 import re
 from typing import Dict as TypeDict
 from traitlets.config.configurable import LoggingConfigurable
-from traitlets.traitlets import Dict
+from traitlets.traitlets import Dict, Unicode
 import sys
 from genericpath import isdir
 from jupyter_core.paths import jupyter_path
@@ -60,9 +60,15 @@ def get_extention_path() -> TypeDict[str, str]:
 
 class OfflineMixing(LoggingConfigurable):
 
+    mathjax_option = Unicode(
+        "TeX-AMS_CHTML-full,Safe",
+        allow_none=True,
+        help="Option for Mathjax URL",
+        config=True,
+    )
+
     mathjax_url = (
         get_template_path("static", "MathJax", "MathJax.js")
-        + "?config=TeX-AMS_CHTML-full,Safe"
     )
 
     widget_renderer_url = get_template_path(

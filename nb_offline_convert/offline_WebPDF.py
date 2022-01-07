@@ -13,6 +13,6 @@ class OfflineWebPDFExporter(OfflineMixing, WebPDFExporter):
     template_name = "webpdf_offline"
 
     def from_notebook_node(self, nb, resources=None, **kw):
-
+        self.mathjax_url = self.mathjax_url + f"?config={self.mathjax_option}"
         resources["offline_module_path"] = self.offline_module_path
         return super().from_notebook_node(nb, resources, **kw)
