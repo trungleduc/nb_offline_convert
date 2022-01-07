@@ -27,6 +27,14 @@ jupyter nbconvert --to html-offline notebook-you-want-to-convert.ipynb
 # convert to pdf
 jupyter nbconvert --to webpdf-offline notebook-you-want-to-convert.ipynb
 ```
+
+The default `Mathjax` option is `TeX-AMS_CHTML-full,Safe`, to change this option, pass `--OfflineHTMLExporter.mathjax_option` to the command line: 
+
+```bash
+# Use 'TeX-MML-AM_CHTML,Safe' option
+jupyter nbconvert --to html-offline --OfflineHTMLExporter.mathjax_option=TeX-MML-AM_CHTML,Safe  notebook-you-want-to-convert.ipynb
+```
+
 - Usage in a script
 
 ```python
@@ -43,6 +51,11 @@ pdf_converter = OfflineWebPDFExporter()
 content, _ = pdf_converter.from_filename("notebook-you-want-to-convert.ipynb")
 with open("converted_file.pdf", "wb") as f:
     f.write(content)
+```
+Add `mathjax_option` parameter to the constructor of `OfflineHTMLExporter` or `OfflineWebPDFExporter` to modify the `Mathjax` option:
+
+```python
+html_converter = OfflineHTMLExporter(mathjax_option="TeX-AMS_CHTML-full,Safe")
 ```
 
 ## Development
